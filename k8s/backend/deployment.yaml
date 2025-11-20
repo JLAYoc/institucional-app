@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: institucional-backend
+  labels:
+    app: institucional-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: institucional-backend
+  template:
+    metadata:
+      labels:
+        app: institucional-backend
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/jlayoc/institucional-backend:latest
+          ports:
+            - containerPort: 3000
