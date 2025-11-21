@@ -1,42 +1,25 @@
-import { useEffect, useState } from "react";
+import QueEsMP from "./components/QueEsMP";
+import ServiciosClave from "./components/ServiciosClave";
+import "./App.css";
 
-function App() {
-  const [entidad, setEntidad] = useState(null);
-  const [servicios, setServicios] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:4000/api/entidad")
-      .then(res => res.json())
-      .then(data => setEntidad(data));
-
-    fetch("http://localhost:4000/api/servicios")
-      .then(res => res.json())
-      .then(data => setServicios(data));
-  }, []);
-
+export default function App() {
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Aplicación Institucional</h1>
+    <div>
+      <header className="header">
+        <div className="top-bar"></div>
+        <h1>Ministerio Público</h1>
+        <h2>República de Guatemala</h2>
+      </header>
 
-      {entidad && (
-        <div>
-          <h2>Entidad</h2>
-          <p><strong>Nombre:</strong> {entidad.nombre}</p>
-          <p><strong>Descripción:</strong> {entidad.descripcion}</p>
-          <p><strong>Ubicación:</strong> {entidad.ubicacion}</p>
-        </div>
-      )}
+      <main className="container">
+        <section className="section">
+          <QueEsMP />
+        </section>
 
-      <h2>Servicios</h2>
-      <ul>
-        {servicios.map(s => (
-          <li key={s.id}>
-            {s.nombre} — <strong>{s.estado}</strong>
-          </li>
-        ))}
-      </ul>
+        <section className="section">
+          <ServiciosClave />
+        </section>
+      </main>
     </div>
   );
 }
-
-export default App;
