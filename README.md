@@ -1,2 +1,5 @@
-# institucional-app
-Aplicación de prueba con front end y backend
+# Institucional Frontend (React)
+
+Aplicación React/Vite que presenta información institucional sobre el "Ministerio Público" y consume un backend para la sección "Servicios Clave".
+
+## Estructura
